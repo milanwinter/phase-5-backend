@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  rating: MyString
+  int: MyString
+  user: one
+  resort: one
+
+two:
+  title: MyString
+  rating: MyString
+  int: MyString
+  user: two
+  resort: two

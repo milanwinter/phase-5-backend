@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  resources :resorts do
-    match '/scrape', to: 'resorts#scrape', via :post, on: :collection
-  end
+  resources :users
+  resources :reviews
+  resources :favorites
+  resources :usernames
+  resources :resorts
 
 
-  root to: 'resorts#index'
+  post '/login', to: "auth#create"
+  get '/profile', to: 'users#profile'
+
+  get '/weather', to: "weather#show"
+
+
+
 end

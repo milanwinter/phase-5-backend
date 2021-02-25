@@ -10,13 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_175706) do
+ActiveRecord::Schema.define(version: 2021_02_25_194319) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "resort_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["resort_id"], name: "index_favorites_on_resort_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "resorts", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.string "website"
+    t.string "city"
+    t.string "logo"
+    t.string "map"
+    t.string "api_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.string "rating"
+    t.string "int"
+    t.integer "user_id", null: false
+    t.integer "resort_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["resort_id"], name: "index_reviews_on_resort_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "usernames", force: :cascade do |t|
+    t.string "password_digest"
+    t.string "skill"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "skill"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "favorites", "resorts"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "reviews", "resorts"
+  add_foreign_key "reviews", "users"
 end
