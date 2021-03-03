@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_194319) do
   create_table "resorts", force: :cascade do |t|
     t.string "name"
     t.string "website"
-    t.string "city"
+    t.string "state"
     t.string "logo"
     t.string "map"
     t.string "api_id"
@@ -34,21 +34,14 @@ ActiveRecord::Schema.define(version: 2021_02_25_194319) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.string "rating"
-    t.string "int"
+    t.integer "rating"
+    t.string "content"
     t.integer "user_id", null: false
     t.integer "resort_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["resort_id"], name: "index_reviews_on_resort_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "usernames", force: :cascade do |t|
-    t.string "password_digest"
-    t.string "skill"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

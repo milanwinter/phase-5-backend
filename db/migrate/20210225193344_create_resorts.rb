@@ -3,7 +3,7 @@ class CreateResorts < ActiveRecord::Migration[6.0]
     create_table :resorts do |t|
       t.string :name
       t.string :website
-      t.string :city
+      t.string :state
       t.string :logo
       t.string :map
       t.string :api_id

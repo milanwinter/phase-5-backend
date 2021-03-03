@@ -45,3 +45,7 @@ gem "kimurai", "~> 1.4"
 gem "figaro", "~> 1.2"
 
 gem "rest-client", "~> 2.1"
+
+gem "jwt", "~> 2.2"
+
+gem "dotenv-rails", "~> 2.7"
