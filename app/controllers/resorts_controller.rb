@@ -5,7 +5,7 @@ class ResortsController < ApplicationController
     def index
         resorts = Resort.all
 
-        render json: resorts
+        render json: resorts, :include => {:reviews => {:only => [:rating]}}
     end
 
     def show
