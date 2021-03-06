@@ -21,6 +21,7 @@ class WeatherController < ApplicationController
             final = {resort: resort, inches: inches, average: average}
             weather_array.push(final)
         end
+        
         render json: weather_array
     end
 
