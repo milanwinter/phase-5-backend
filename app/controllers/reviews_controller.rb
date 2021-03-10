@@ -2,9 +2,13 @@ class ReviewsController < ApplicationController
     skip_before_action :authorized
 
     def create
+        review=Review.new(review_params)
+        if review.save
+            render json: review, :include => {:resort => {:only => [:name]}}
+        else
+            render json: { status: 500, errors: review.errors }
+        end 
         
-        review=Review.create(review_params)
-        render json: review
     end
 
     def index 
